@@ -12,18 +12,7 @@ $("#currentDay").text(titleTime);
 // apply timeblock class
 //$("#timeblock").addClass("time-block");
 
-// populate more than one hour
-for (i=0; i<workdayHours.length; i++) {
-    var timeblock = $("#time-block");
-    var eventRow = $(".event-row");
-    timeblock.text("banana");
-    timeblock.addClass("time-block");
-    timeblock.addClass("future");
-}
 
-// make hour blocks hoverable
-
-// show times in left column
 
 // show events in each time block
 
