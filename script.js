@@ -35,12 +35,12 @@ updateColors(nowHours);
 // set time blocks to have empty text
 scheduleClass.text("");
 
-// make time blocks clickable 
-$(".schedule").on("click", function() {
-    // console.log("clicked");
-    // allow user to type inputs 
-    var inputBox = $('<input type="text" class="userinput">').appendTo($(this));
-});
+// // make time blocks clickable 
+// $(".schedule").on("click", function() {
+//     // console.log("clicked");
+//     // allow user to type inputs 
+//     var inputBox = $('<input type="text" class="userinput">').appendTo($(this));
+// });
 
 // show events in each time block
 
