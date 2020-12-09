@@ -2,8 +2,8 @@
 var currentDay = $("#currentDay");
 var now = luxon.DateTime.local();
 //console.log(now);
-var nowHour = luxon.DateTime.local().toObject().hour;
-//console.log(nowHour);
+var nowHours = luxon.DateTime.local().toObject().hour;
+//console.log(nowHours);
 var titleTime = luxon.DateTime.local().toLocaleString({ weekday: 'long', month: 'long', day: '2-digit', hour: "2-digit", minute: "2-digit"});
 //console.log(titleTime);
 var workdayHours = [09, 10, 11, 12, 13, 14, 15, 16, 17];
@@ -37,7 +37,7 @@ function updateColors (currentTimeHours) {
     })
 }
 
-updateColors(nowHour);
+updateColors(nowHours);
     
 
 
