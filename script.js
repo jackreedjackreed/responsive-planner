@@ -9,9 +9,16 @@ var workdayHours = [06,07,08,09,10,11,12,13,14,15,16,17,18,19,20,21,22];
 // get current time and put it below the jumbotron
 $("#currentDay").text(titleTime);
 
+// apply timeblock class
+//$("#timeblock").addClass("time-block");
+
 // populate more than one hour
 for (i=0; i<workdayHours.length; i++) {
-    var timeblock = 3
+    var timeblock = $("#time-block");
+    var eventRow = $(".event-row");
+    timeblock.text("banana");
+    timeblock.addClass("time-block");
+    timeblock.addClass("future");
 }
 
 // make hour blocks hoverable
@@ -25,6 +32,9 @@ for (i=0; i<workdayHours.length; i++) {
     // current = red
     // upcoming = green
 
+// time-row
+// event-row
+// edit-row
 
 
 // click right column button to edit middle column texts
