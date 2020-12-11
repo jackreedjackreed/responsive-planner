@@ -6,13 +6,12 @@ var nowHours = luxon.DateTime.local().toObject().hour;
 //console.log(nowHours);
 var titleTime = luxon.DateTime.local().toLocaleString({ weekday: 'long', month: 'long', day: '2-digit', hour: "2-digit", minute: "2-digit"});
 //console.log(titleTime);
+
+// grabs schedule class
 var scheduleClass = $(".schedule");
-// ^ grabs schedule class
-var inputtext = scheduleClass.val();
-console.log(scheduleClass.val());
-// ^ grabs value of text for schedule class
-// var workdayHours = [09, 10, 11, 12, 13, 14, 15, 16, 17];
+
 var saveBtns = $(".saveBtn");
+// ^ grabs button class
 
 
 // get current time and put it below the jumbotron
@@ -45,19 +44,21 @@ updateColors(nowHours);
  // upon clicking save button, user input gets saved to local storage
 
 // save to local storage function
-function saveToLS(userinput) {
-    var inputtext = scheduleClass.val();
-    console.log(inputtext);
+function saveToLS(eventHour, userInput) {
+    var textAreaInput = $(this);
+    console.log(textAreaInput);
+    localStorage.setItem(eventHour, userInput);
+    console.log(userInput);
 }
 
 saveBtns.on("click", function(){
-    // console.log("banana");
-    console.log($(this).prev().val());
-    // if (scheduleClass.value !== "") {
-    //     console.log($(scheduleClass.clientHeight));
-    // }
-    //console.log($(this).inputtext);
-    //saveToLS(inputtext);
+    // gets the value of the input text in the text area
+    var inputText = $(this).prev().val();
+    console.log(inputText);
+    var eventHour = $(this).parent().attr("id");
+    console.log(eventHour);
+
+    saveToLS(inputText);
 });
 
     
