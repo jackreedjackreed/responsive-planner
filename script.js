@@ -33,22 +33,18 @@ function updateColors (currentTimeHours) {
 updateColors(nowHours);
 
 // set time blocks to have empty text
-scheduleClass.text("");
 
-// // make time blocks clickable 
-// $(".schedule").on("click", function() {
-//     // console.log("clicked");
-//     // allow user to type inputs 
-//     var inputBox = $('<input type="text" class="userinput">').appendTo($(this));
-// });
 
 // show events in each time block
+ // upon clicking save button, user input gets saved to local storage
 
+// save to local storage function
+function saveToLS(userinput) {
+    var inputtext = $(".schedule").val().trim();
+    console.log(inputtext);
+}
 
-
-    // upon clicking save button, user input gets saved to local storage
-
-
+scheduleClass.on("click", saveToLS($("textarea".val())));
 
 
 
