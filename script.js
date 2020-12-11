@@ -7,7 +7,12 @@ var nowHours = luxon.DateTime.local().toObject().hour;
 var titleTime = luxon.DateTime.local().toLocaleString({ weekday: 'long', month: 'long', day: '2-digit', hour: "2-digit", minute: "2-digit"});
 //console.log(titleTime);
 var scheduleClass = $(".schedule");
+// ^ grabs schedule class
+var inputtext = scheduleClass.val();
+// ^ grabs value of text for schedule class
 var workdayHours = [09, 10, 11, 12, 13, 14, 15, 16, 17];
+var saveBtns = $(".saveBtn");
+
 
 // get current time and put it below the jumbotron
 currentDay.text(titleTime);
@@ -40,11 +45,11 @@ updateColors(nowHours);
 
 // save to local storage function
 function saveToLS(userinput) {
-    var inputtext = $(".schedule").val().trim();
+    var inputtext = scheduleClass.val();
     console.log(inputtext);
 }
 
-scheduleClass.on("click", saveToLS($("textarea".val())));
+saveBtns.on("click", saveToLS($(this).val()));
 
 
 
