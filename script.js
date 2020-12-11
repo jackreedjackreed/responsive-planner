@@ -9,8 +9,9 @@ var titleTime = luxon.DateTime.local().toLocaleString({ weekday: 'long', month: 
 var scheduleClass = $(".schedule");
 // ^ grabs schedule class
 var inputtext = scheduleClass.val();
+console.log(scheduleClass.val());
 // ^ grabs value of text for schedule class
-var workdayHours = [09, 10, 11, 12, 13, 14, 15, 16, 17];
+// var workdayHours = [09, 10, 11, 12, 13, 14, 15, 16, 17];
 var saveBtns = $(".saveBtn");
 
 
@@ -49,9 +50,15 @@ function saveToLS(userinput) {
     console.log(inputtext);
 }
 
-saveBtns.on("click", saveToLS($(this).val()));
-
-
+saveBtns.on("click", function(){
+    // console.log("banana");
+    console.log($(this).prev().val());
+    // if (scheduleClass.value !== "") {
+    //     console.log($(scheduleClass.clientHeight));
+    // }
+    //console.log($(this).inputtext);
+    //saveToLS(inputtext);
+});
 
     
 
