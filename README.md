@@ -13,3 +13,5 @@ A responsive day planner that:
 - press adjacent save button to save text to local storage
 
 https://jackreedjackreed.github.io/responsive-planner/
+
+<img src="work-day-scheduler.png" alt="screnshot of application">
