@@ -6,6 +6,7 @@ var nowHours = luxon.DateTime.local().toObject().hour;
 //console.log(nowHours);
 var titleTime = luxon.DateTime.local().toLocaleString({ weekday: 'long', month: 'long', day: '2-digit', hour: "2-digit", minute: "2-digit"});
 //console.log(titleTime);
+var workHours = [09,10,11,12,13,14,15,16,17]
 
 // grabs schedule class
 var scheduleClass = $(".schedule");
@@ -35,41 +36,8 @@ function updateColors (currentTimeHours) {
         }
     })
 }
+// update the colors 
 updateColors(nowHours);
-
-
-function updateEvents() {
-    var timeBlocks = $(".time-block");
-    console.log(timeBlocks + "timeblocks");
-    var timeBlocksID = timeBlocks.attr("id");
-    console.log(timeBlocksID + "timeblocksid");
-    var timeBlockTextArea = timeBlocks.children([1]);
-    console.log(timeBlockTextArea + "timeBlockTextArea");
-    var storedEvent = localStorage.getItem(timeBlocksID)
-    console.log(storedEvent + "storedevent");
-    // here, the stored event comes out correctly --> the correct hour/ID has the correct stored event
-
-
-    timeBlocksID.each(function() {
-        // storedEvent = localStorage.getItem(timeBlocksID);
-        // console.log(storedEvent);
-        // ^^ all comes back null and i'm not sure why. this is where i got stuck. 
-        // THE ONLY THING i can't figure out is how to retrieve and populate the boxes that have stuff in local storage.
-        if (storedEvent !== null && ) {
-            console.log("not null!");
-            $(this).val(storedEvent);
-        }
-    }
-)};
-
-updateEvents()
-
-// save to local storage function
-function saveToLS(eventHour, userInput) {
-    localStorage.setItem(eventHour, userInput);
-    console.log(eventHour);
-    console.log(userInput);
-}
 
 // make buttons clickable and get parameters for saveToLS fxn
 saveBtns.on("click", function(){
@@ -83,6 +51,69 @@ saveBtns.on("click", function(){
     saveToLS(eventHour, inputText);
 
 });
+var arrayOfKeys = Object.keys(localStorage);
+// console.log(arrayOfKeys);
+var arrayOfValues = Object.values(localStorage);
+// console.log(arrayOfValues);
+
+// save to local storage function
+function saveToLS(eventHour, userInput) {
+    localStorage.setItem(eventHour, userInput);
+    // console.log(eventHour);
+    // console.log(userInput);
+}
+
+function updateEvents2() {
+    var timeBlocks = $(".time-block");
+    // console.log(timeBlocks + "timeblocks");
+    var timeBlocksID = timeBlocks.attr("id");
+    // console.log(timeBlocksID + "timeblocksid");
+    var timeBlockTextArea = timeBlocks.children([1]);
+    //var timeBlockTextArea = $(".schedule");
+    // console.log(timeBlockTextArea + "timeBlockTextArea");
+
+    for (i = 0; i < arrayOfKeys.length; i++) {
+        var valuess = arrayOfValues[i];
+        if (arrayOfKeys[i] !== null) {
+            storedEvent = localStorage.getItem(workHours[i]);
+            // console.log(storedEvent);
+            timeBlockTextArea.val(storedEvent);
+            // I ALSO THOUGHT this would work, but it doesnt. Would love an explanation for either function.
+        }
+    }
+}
+// updateEvents2();
+
+function updateEvents() {
+    var timeBlocks = $(".time-block");
+    // console.log(timeBlocks + "timeblocks");
+    var timeBlocksID = timeBlocks.attr("id");
+    // console.log(timeBlocksID + "timeblocksid");
+    var timeBlockTextArea = timeBlocks.children([1]);
+    // console.log(timeBlockTextArea + "timeBlockTextArea");
+    var storedEvent = localStorage.getItem(timeBlocksID)
+    // console.log(storedEvent + "storedevent");
+    // here, the stored event comes out correctly --> the correct hour/ID has the correct stored event
+
+
+    timeBlocks.each(function() {
+        storedEvent = localStorage.getItem(timeBlocksID);
+        // console.log(storedEvent);
+        timeBlocks.children([1]).val(storedEvent);
+        // ^^ all comes back null and i'm not sure why. this is where i got stuck. 
+        // THE ONLY THING i can't figure out is how to retrieve and populate the boxes that have stuff in local storage.
+        // if (storedEvent !== null) {
+            // console.log("not null!");
+            // timeBlocks.children([1]).val(storedEvent);
+        }
+    // // }
+)};
+
+// update the events
+ updateEvents()
+
+
+
 
     
 
