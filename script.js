@@ -37,28 +37,51 @@ function updateColors (currentTimeHours) {
 }
 updateColors(nowHours);
 
-// set time blocks to have empty text
+
+function updateEvents() {
+    var timeBlocks = $(".time-block");
+    console.log(timeBlocks + "timeblocks");
+    var timeBlocksID = timeBlocks.attr("id");
+    console.log(timeBlocksID + "timeblocksid");
+    var timeBlockTextArea = timeBlocks.children([1]);
+    console.log(timeBlockTextArea + "timeBlockTextArea");
+    var storedEvent = localStorage.getItem(timeBlocksID)
+    console.log(storedEvent + "storedevent");
+    // here, the stored event comes out correctly --> the correct hour/ID has the correct stored event
 
 
-// show events in each time block
- // upon clicking save button, user input gets saved to local storage
+    timeBlocksID.each(function() {
+        // storedEvent = localStorage.getItem(timeBlocksID);
+        // console.log(storedEvent);
+        // ^^ all comes back null and i'm not sure why. this is where i got stuck. 
+        // THE ONLY THING i can't figure out is how to retrieve and populate the boxes that have stuff in local storage.
+        if (storedEvent !== null && ) {
+            console.log("not null!");
+            $(this).val(storedEvent);
+        }
+    }
+)};
+
+updateEvents()
 
 // save to local storage function
 function saveToLS(eventHour, userInput) {
-    var textAreaInput = $(this);
-    console.log(textAreaInput);
     localStorage.setItem(eventHour, userInput);
+    console.log(eventHour);
     console.log(userInput);
 }
 
+// make buttons clickable and get parameters for saveToLS fxn
 saveBtns.on("click", function(){
+    // gets the hour of the event of the inputText
+    var eventHour = $(this).parent().attr("id");
+    // console.log(eventHour);
     // gets the value of the input text in the text area
     var inputText = $(this).prev().val();
-    console.log(inputText);
-    var eventHour = $(this).parent().attr("id");
-    console.log(eventHour);
+    // console.log(inputText);
+    
+    saveToLS(eventHour, inputText);
 
-    saveToLS(inputText);
 });
 
     
