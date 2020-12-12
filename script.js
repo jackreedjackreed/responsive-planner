@@ -1,3 +1,14 @@
+//  HI THERE
+
+// I came so close to figuring this one out but was ultimately unable to populate the textareas 
+// with the information in local storage. Would LOVE an explanation as to why neither functions worked
+// the way I had intended them to.
+
+// Thanks, Jack
+
+
+
+
 
 var currentDay = $("#currentDay");
 //var now = luxon.DateTime.local();
