@@ -21,10 +21,8 @@ var workHours = [09,10,11,12,13,14,15,16,17]
 
 // grabs schedule class
 var scheduleClass = $(".schedule");
-
+// grabs button class
 var saveBtns = $(".saveBtn");
-// ^ grabs button class
-
 
 // get current time and put it below the jumbotron
 currentDay.text(titleTime);
@@ -54,12 +52,15 @@ updateColors(nowHours);
 saveBtns.on("click", function(){
     // gets the hour of the event of the inputText
     var eventHour = $(this).parent().attr("id");
-    // console.log(eventHour);
+    console.log(eventHour);
     // gets the value of the input text in the text area
     var inputText = $(this).prev().val();
-    // console.log(inputText);
+    console.log(inputText);
+
+    // trying to save in this fxn instead of saveToLS fsn
+    localStorage.setItem(eventHour, inputText);
     
-    saveToLS(eventHour, inputText);
+    // saveToLS(eventHour, inputText);
 
 });
 var arrayOfKeys = Object.keys(localStorage);
@@ -97,13 +98,13 @@ function updateEvents2() {
 
 function updateEvents() {
     var timeBlocks = $(".time-block");
-    // console.log(timeBlocks + "timeblocks");
+    console.log(timeBlocks + "timeblocks");
     var timeBlocksID = timeBlocks.attr("id");
-    // console.log(timeBlocksID + "timeblocksid");
-    var timeBlockTextArea = timeBlocks.children([1]);
-    // console.log(timeBlockTextArea + "timeBlockTextArea");
+    console.log(timeBlocksID + "timeblocksid");
+    var timeBlockTextArea = timeBlocks.children(1);
+    console.log(timeBlockTextArea + "timeBlockTextArea");
     var storedEvent = localStorage.getItem(timeBlocksID)
-    // console.log(storedEvent + "storedevent");
+    console.log(storedEvent + "storedevent");
     // here, the stored event comes out correctly --> the correct hour/ID has the correct stored event
 
 
