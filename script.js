@@ -51,7 +51,7 @@ updateColors(nowHours);
 // make buttons clickable and get parameters for saveToLS fxn
 saveBtns.on("click", function(){
     // gets the hour of the event of the inputText
-    var eventHour = $(this).parent().attr("id");
+    var eventHour = $(this).parent().attr("id") + ":00";
     console.log(eventHour);
     // gets the value of the input text in the text area
     var inputText = $(this).prev().val();
@@ -75,25 +75,25 @@ function saveToLS(eventHour, userInput) {
     // console.log(userInput);
 }
 
-function updateEvents2() {
-    var timeBlocks = $(".time-block");
-    // console.log(timeBlocks + "timeblocks");
-    var timeBlocksID = timeBlocks.attr("id");
-    // console.log(timeBlocksID + "timeblocksid");
-    var timeBlockTextArea = timeBlocks.children([1]);
-    //var timeBlockTextArea = $(".schedule");
-    // console.log(timeBlockTextArea + "timeBlockTextArea");
+// function updateEvents2() {
+//     var timeBlocks = $(".time-block");
+//     // console.log(timeBlocks + "timeblocks");
+//     var timeBlocksID = timeBlocks.attr("id");
+//     // console.log(timeBlocksID + "timeblocksid");
+//     var timeBlockTextArea = timeBlocks.children([1]);
+//     //var timeBlockTextArea = $(".schedule");
+//     // console.log(timeBlockTextArea + "timeBlockTextArea");
 
-    for (i = 0; i < arrayOfKeys.length; i++) {
-        var valuess = arrayOfValues[i];
-        if (arrayOfKeys[i] !== null) {
-            storedEvent = localStorage.getItem(workHours[i]);
-            // console.log(storedEvent);
-            timeBlockTextArea.val(storedEvent);
-            // I ALSO THOUGHT this would work, but it doesnt. Would love an explanation for either function.
-        }
-    }
-}
+//     for (i = 0; i < arrayOfKeys.length; i++) {
+//         var valuess = arrayOfValues[i];
+//         if (arrayOfKeys[i] !== null) {
+//             storedEvent = localStorage.getItem(workHours[i]);
+//             // console.log(storedEvent);
+//             timeBlockTextArea.val(storedEvent);
+//             // I ALSO THOUGHT this would work, but it doesnt. Would love an explanation for either function.
+//         }
+//     }
+// }
 // updateEvents2();
 
 function updateEvents() {
@@ -106,9 +106,11 @@ function updateEvents() {
     var storedEvent = localStorage.getItem(timeBlocksID)
     console.log(storedEvent + "storedevent");
     // here, the stored event comes out correctly --> the correct hour/ID has the correct stored event
+    timeBlockHours = $(".hour").text()
+    console.log(timeBlockHours + "timeblockhours");
 
-
-    timeBlocks.each(function() {
+    timeBlocksID.each(function() {
+        var eventHour = 
         storedEvent = localStorage.getItem(timeBlocksID);
         // console.log(storedEvent);
         timeBlocks.children([1]).val(storedEvent);
