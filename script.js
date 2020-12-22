@@ -6,10 +6,6 @@
 
 // Thanks, Jack
 
-
-
-
-
 var currentDay = $("#currentDay");
 //var now = luxon.DateTime.local();
 //console.log(now);
@@ -52,10 +48,10 @@ updateColors(nowHours);
 saveBtns.on("click", function(){
     // gets the hour of the event of the inputText
     var eventHour = $(this).parent().attr("id") + ":00";
-    console.log(eventHour);
+    //console.log(eventHour);
     // gets the value of the input text in the text area
     var inputText = $(this).prev().val();
-    console.log(inputText);
+    //console.log(inputText);
 
     // trying to save in this fxn instead of saveToLS fsn
     localStorage.setItem(eventHour, inputText);
@@ -65,25 +61,17 @@ saveBtns.on("click", function(){
 });
 
 function updateEvents() {
-    var timeBlocks = $(".time-block");
-    console.log(timeBlocks + "timeblocks");
-    var timeBlocksID = timeBlocks.attr("id");
-    console.log(timeBlocksID + "timeblocksid");
-    var timeBlockTextArea = timeBlocks.children[1];
-    console.log(timeBlockTextArea + "timeBlockTextArea");
-    var storedEvent = localStorage.getItem(timeBlocksID)
-    console.log(storedEvent + "storedevent");
-    // here, the stored event comes out correctly --> the correct hour/ID has the correct stored event
-    var timeBlockHours = $(".hour")
-    console.log(timeBlockHours + "timeblockhours");
-
+    var timeBlockHours = $(".hour");
     timeBlockHours.each(function() {
         var eventHour = $(this).text()
+        // console.log(eventHour);
         var storedEvent = localStorage.getItem(eventHour);
+        console.log($(this).siblings());
+        // console.log(eventHour + storedEvent + " = stored event from storage!");
         // console.log(storedEvent);
         if (storedEvent !== null) {
-            console.log("not null");
-            timeBlockTextArea.val(storedEvent);
+            // console.log("not null");
+            $(this).siblings(0).val(storedEvent);
             
         }
         // ^^ all comes back null and i'm not sure why. this is where i got stuck. 
@@ -132,7 +120,17 @@ function updateEvents() {
 // updateEvents2();
 
 
-
+// var timeBlocks = $(".time-block");
+//     //console.log(timeBlocks + "timeblocks");
+//     var timeBlocksID = timeBlocks.attr("id");
+//     //console.log(timeBlocksID + "timeblocksid");
+//     var timeBlockTextArea = timeBlocks.children[1];
+//     //console.log(timeBlockTextArea + "timeBlockTextArea");
+//     var storedEvent = localStorage.getItem(timeBlocksID)
+//     //console.log(storedEvent + "storedevent");
+//     // here, the stored event comes out correctly --> the correct hour/ID has the correct stored event
+//     var timeBlockHours = $(".hour")
+//     //console.log(timeBlockHours + "timeblockhours");
 
 
 
