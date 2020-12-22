@@ -1,22 +1,10 @@
-//  HI THERE
+//  S T A R T 
 
-// I came so close to figuring this one out but was ultimately unable to populate the textareas 
-// with the information in local storage. Would LOVE an explanation as to why neither functions worked
-// the way I had intended them to.
-
-// Thanks, Jack
-
+// grab vars
 var currentDay = $("#currentDay");
-//var now = luxon.DateTime.local();
-//console.log(now);
 var nowHours = luxon.DateTime.local().toObject().hour;
-//console.log(nowHours);
 var titleTime = luxon.DateTime.local().toLocaleString({ weekday: 'long', month: 'long', day: '2-digit', hour: "2-digit", minute: "2-digit"});
-//console.log(titleTime);
-var workHours = [09,10,11,12,13,14,15,16,17]
 
-// grabs schedule class
-var scheduleClass = $(".schedule");
 // grabs button class
 var saveBtns = $(".saveBtn");
 
@@ -44,7 +32,7 @@ function updateColors (currentTimeHours) {
 // update the colors 
 updateColors(nowHours);
 
-// make buttons clickable and get parameters for saveToLS fxn
+// make buttons clickable and save inputs to local storage
 saveBtns.on("click", function(){
     // gets the hours of the event of the inputText
     var eventHour = $(this).parent().attr("id") + ":00";
@@ -58,7 +46,7 @@ saveBtns.on("click", function(){
 
 function updateEvents() {
     var timeBlockHours = $(".hour");
-    // loop through hours
+    // loop through each hours, XX:XX format
     timeBlockHours.each(function() {
         // get string eventHour
         var eventHour = $(this).text();
